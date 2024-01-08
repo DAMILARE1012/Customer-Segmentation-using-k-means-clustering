@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Predictive Analytics: Customer Behavioral Segmentation Using Machine Learning</title>
+        <style type="text/css">
+        body {
+          color: black;
+          margin: 0;
+          padding: 0;
+          font-family: Arial, sans-serif;
+        }
+
+        h2 {
+          color: black;
+          text-align: center;
+          font-weight: bold;
+        }
+
+        p {
+            color: black;
+            text-align: justify;
+        }
+
+        .results {
+            color: blue;
+        }
+
+        .introdiv, .formdiv, .center {
+            margin: auto;
+            width: 80%;
+            padding: 8px;
+			text-align: left;
+        }
+
+        .introdiv {
+            background-color: lightblue;
+        }
+
+        .formdiv {
+			font-size: 11px;
+            background-color: gray;
+        }
+
+        .center {
+            border: 1px dashed blue;
+            background-color: lavender;
+        }
+
+        @media (min-width: 768px) {
+            .introdiv, .formdiv, .center {
+                width: 65%;
+            }
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkred;
+        }
+
+        form p {
+            margin: 8px 0;
+        }
+
+        .small-button{
+            padding: 5px 10px; 
+            font-size: 14px; 
+        }
+
+        </style>
+    </head>
+    <body>
+        <div class="center">
+            <div class="introdiv">
+                <h2>Predictive Analytics: Customer Behavioral Segmentation Using Machine Learning</h2>
+                <p style="text-align: justify;">This application is designed to revolutionize customer behavioral segmentation by analyzing nine distinct attributes.
+				Users are prompted to input a series of values corresponding to these key attributes.
+				Upon submission, the system employs advanced algorithms to process this data and categorize customers into one of seven distinct clusters.
+				Each cluster represents a unique behavioral segment, allowing for more targeted and effective customer engagement strategies.
+				</p>
+            </div>
+            <div class="formdiv">
+                <form method="POST" action="{{url_for('predict')}}" enctype="multipart/form-data">
+					<div style="display: flex; justify-content: space-between; ">
+						<p style="text-align: left; flex: 1; margin-right: 10px;">  
+							<label for="BALANCE">BALANCE:</label>
+							<input type="text" name="balance" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+						<p style="text-align: left; flex: 1;">  
+							<label for="BALANCE_FREQUENCY">BALANCE_FREQUENCY:</label>
+							<input type="text" name="balance_frequency" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+					</div>
+
+					<div style="display: flex; justify-content: space-between; ">
+						<p style="text-align: left; flex: 1; margin-right: 10px;">  
+							<label for="">PURCHASES:</label>
+							<input type="text" name="purchases" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+						<p style="text-align: left; flex: 1;">  
+							<label for="">ONEOFF_PURCHASES:</label>
+							<input type="text" name="oneoff_purchases" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+					</div>
+
+					<div style="display: flex; justify-content: space-between; ">
+						<p style="text-align: left; flex: 1; margin-right: 10px;">  
+							<label for="">INSTALLMENTS_PURCHASES:</label>
+							<input type="text" name="installments_purchases" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+						<p style="text-align: left; flex: 1;">  
+							<label for="">CASH_ADVANCE:</label>
+							<input type="text" name="cash_advance" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+					</div>
+                    <div style="display: flex; justify-content: space-between; ">
+						<p style="text-align: left; flex: 1; margin-right: 10px;">  
+							<label for="">PURCHASES_FREQUENCY:</label>
+							<input type="text" name="purchases_frequency" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+						<p style="text-align: left; flex: 1;">  
+							<label for="">ONEOFF_PURCHASES_FREQUENCY:</label>
+							<input type="text" name="oneoff_purchases_frequency" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+					</div>
+                    <div style="display: flex; justify-content: space-between; ">
+						<p style="text-align: left; flex: 1; margin-right: 10px;">  
+							<label for="">PURCHASES_INSTALLMENTS_FREQUENCY:</label>
+							<input type="text" name="purchases_installments_frequency" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+						<p style="text-align: left; flex: 1;">  
+							<label for="">CASH_ADVANCE_FREQUENCY:</label>
+							<input type="text" name="cash_advance_frequency" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+					</div>
+                    <div style="display: flex; justify-content: space-between; ">
+						<p style="text-align: left; flex: 1; margin-right: 10px;">  
+							<label for="">CASH_ADVANCE_TRX:</label>
+							<input type="text" name="cash_advance_trx" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+						<p style="text-align: left; flex: 1;">  
+							<label for="">PURCHASES_TRX:</label>
+							<input type="text" name="purchases_trx" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+					</div>
+                    <div style="display: flex; justify-content: space-between; ">
+						<p style="text-align: left; flex: 1; margin-right: 10px;">  
+							<label for="">CREDIT_LIMIT:</label>
+							<input type="text" name="credit_limit" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+						<p style="text-align: left; flex: 1;">  
+							<label for="">PAYMENTS:</label>
+							<input type="text" name="payments" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+					</div>	
+                    
+                    <div style="display: flex; justify-content: space-between; ">
+						<p style="text-align: left; flex: 1; margin-right: 10px;">  
+							<label for="">MINIMUM_PAYMENTS:</label>
+							<input type="text" name="minimum_payments" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+						<p style="text-align: left; flex: 1;">  
+							<label for="">PRC_FULL_PAYMENT:</label>
+							<input type="text" name="prc_full_payment" placeholder="Number Only" required pattern="[0-9]+">
+						</p>
+					</div>	
+                    				
+					</div>	
+					<p>
+					<input type="submit" value="Submit" class="small-button">
+					</p>
+				</form>
+            </div>
+        </div>
+    </body>
+</html>
